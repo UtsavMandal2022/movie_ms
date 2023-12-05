@@ -76,18 +76,18 @@ WSGI_APPLICATION = 'newsbackend.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'Movies',
-        'USER': 'postgres',
-        'PASSWORD': '1234',
-        # 'PASSWORD': '08112003',
-        'HOST': 'localhost',
-        # 'HOST': '10.54.0.21',
-        'PORT': '5432'
-    }
-}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'Movies',
+#         'USER': 'postgres',
+#         'PASSWORD': '1234',
+#         # 'PASSWORD': '08112003',
+#         'HOST': 'localhost',
+#         # 'HOST': '10.54.0.21',
+#         'PORT': '5432'
+#     }
+# }
 
 
 # Password validation
@@ -127,7 +127,7 @@ Email_HOST = 'smtp.gmail.com'
 Email_PORT = 465
 Email_HOST_USER = 'testmail123349@gmail.com'
 Email_HOST_PASSWORD = 'lppabhohsrhyczib'
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
