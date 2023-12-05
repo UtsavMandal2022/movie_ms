@@ -124,9 +124,9 @@ USE_TZ = True
 # SMTP Configuration using Gmail
 
 Email_HOST = 'smtp.gmail.com'
-Email_PORT = 465
-Email_HOST_USER = 'testmail123349@gmail.com'
-Email_HOST_PASSWORD = 'lppabhohsrhyczib'
+Email_PORT = 587
+Email_HOST_USER = ''
+Email_HOST_PASSWORD = ''
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 # Static files (CSS, JavaScript, Images)
