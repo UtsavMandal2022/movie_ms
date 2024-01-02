@@ -9,10 +9,11 @@ https://docs.djangoproject.com/en/4.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
-
-import django
-import os
 from pathlib import Path
+import environ
+
+env=environ.Env()
+environ.Env.read_env()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -27,7 +28,7 @@ SECRET_KEY = 'django-insecure-73x=%tuuyom6bn%lpg&vs5^*y0z30i5scsab5^uzbfoflu)9q2
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*',]
 
 
 # Application definition
@@ -40,6 +41,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'movies',
+    'User',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
@@ -50,10 +53,13 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware', # add this
 ]
 
-ROOT_URLCONF = 'newsbackend.urls'
+ROOT_URLCONF = 'moviebackend.urls'
 
+CORS_ORIGIN_ALLOW_ALL = True # add this
+ 
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -70,24 +76,18 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'newsbackend.wsgi.application'
+WSGI_APPLICATION = 'moviebackend.wsgi.application'
 
 
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': 'Movies',
-#         'USER': 'postgres',
-#         'PASSWORD': '1234',
-#         # 'PASSWORD': '08112003',
-#         'HOST': 'localhost',
-#         # 'HOST': '10.54.0.21',
-#         'PORT': '5432'
-#     }
-# }
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
+}
 
 
 # Password validation
@@ -123,11 +123,12 @@ USE_TZ = True
 
 # SMTP Configuration using Gmail
 
-Email_HOST = 'smtp.gmail.com'
-Email_PORT = 465
-Email_HOST_USER = 'testmail123349@gmail.com'
-Email_HOST_PASSWORD = 'lppabhohsrhyczib'
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = env('EMAILPORT')
+EMAIL_USE_TLS = True
+Email_HOST_USER = env('EMAILUSER')
+Email_HOST_PASSWORD = env('EMAILPASSWORD')
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/

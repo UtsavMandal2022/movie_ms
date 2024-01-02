@@ -1,2 +1,5 @@
 django
-rest_framework
+djangorestframework
+django-cors-headers
+PyJWT
+django-environ

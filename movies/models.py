@@ -10,6 +10,7 @@ class Movie(models.Model):
     movie_rating = models.FloatField(blank=True,null=True)
     movie_release_date = models.DateField(blank=True,null=True)
     movie_language = models.CharField(max_length=100,blank=True,null=True)
+    movie_country = models.CharField(max_length=100,blank=True,null=True)
     movie_cast = models.CharField(max_length=10000,blank=True,null=True)
     movie_director = models.CharField(max_length=100,blank=True,null=True)
     movie_runtime = models.IntegerField(blank=True,null=True)

@@ -9,5 +9,4 @@ urlpatterns = [
     path('deletemovie/<str:movie_id>', delete_movie),
     path('getmoviesbygenre/<str:movie_genre>', get_movie_by_genre),
     path('getmoviesbylanguage/<str:movie_language>', get_movie_by_language),
-    path('send/', send_email),
 ]
