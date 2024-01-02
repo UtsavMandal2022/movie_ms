@@ -1,5 +1,5 @@
 """
-ASGI config for newsbackend project.
+ASGI config for moviebackend project.
 
 It exposes the ASGI callable as a module-level variable named ``application``.
 
